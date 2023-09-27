@@ -15,6 +15,21 @@ class Activity {
   /// Returns the data fields of [Activity] in JSON format.
   Map<String, dynamic> toJson() => {'type': type, 'confidence': confidence};
 
+  /// Create an Activity object from a JSON map.
+  factory Activity.fromJson(Map<String, dynamic> json) {
+    final activityType = getActivityTypeFromString(json['type'] as String);
+    final activityConfidence =
+        getActivityConfidenceFromString(json['confidence'] as String);
+
+    // You might need to convert activityType and activityConfidence to enum values,
+    // depending on how your ActivityType and ActivityConfidence classes are implemented.
+
+    return Activity(
+      activityType,
+      activityConfidence,
+    );
+  }
+
   /// Gets an activity of type UNKNOWN.
   static Activity get unknown =>
       Activity(ActivityType.UNKNOWN, ActivityConfidence.LOW);
