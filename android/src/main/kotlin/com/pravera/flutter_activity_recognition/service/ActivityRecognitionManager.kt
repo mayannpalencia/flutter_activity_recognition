@@ -89,9 +89,9 @@ class ActivityRecognitionManager: SharedPreferences.OnSharedPreferenceChangeList
 	private fun getPendingIntentForService(context: Context): PendingIntent {
 		val intent = Intent(context, ActivityRecognitionIntentReceiver::class.java)
 		return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-			PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_MUTABLE)
+			PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE)
 		} else {
-			PendingIntent.getBroadcast(context, 0, intent, 0)
+			PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 		}
 	}
 
