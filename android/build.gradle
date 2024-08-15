@@ -39,6 +39,7 @@ android {
     defaultConfig {
         minSdkVersion 21
     }
+    namespace 'com.pravera.flutter_activity_recognition'
 }
 
 dependencies {
